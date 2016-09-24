@@ -13,14 +13,14 @@ using System.Data.SqlClient;
 
 
 
-namespace hcy_bulid
+namespace Pro1
 {
     public class Database
     {
         public SqlConnection getConnection()
         {
             //返回连接对象,
-            return new SqlConnection("server=.;uid=sa;pwd=;database=build");
+            return new SqlConnection("server=.;uid=sa;pwd=123456;database=build");
         }
 
 
@@ -102,7 +102,8 @@ namespace hcy_bulid
         {
             if (con == null)
             {
-                con = new SqlConnection("server=.;uid=sa;pwd=;database=build");
+                con = new SqlConnection("server=.;uid=sa;pwd=123456;database=build");
+                Console.WriteLine("debug:数据库已打开");  
             }
 
             if (con.State == ConnectionState.Closed)
@@ -116,7 +117,7 @@ namespace hcy_bulid
         /// 执行SQL语句,该方法返回一个DataTable(内存中的一张表)
         /// </summary>
         /// <param name="sql">SQL语句</param>
-        /// <returns></returns>
+        /// <returns>DataTable</returns>
         public DataTable Query(string sql)
         {
             Open();
@@ -204,6 +205,7 @@ namespace hcy_bulid
             if (con != null)
             {
                 con.Close();
+                Console.WriteLine("debug:数据库已关闭"); 
             }
         }
 

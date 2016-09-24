@@ -1,6 +1,6 @@
 ﻿namespace Pro1
 {
-    partial class login
+    partial class Login
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +47,6 @@
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "用户名";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -78,6 +77,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "登陆";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -104,7 +104,7 @@
             this.textBox1.Size = new System.Drawing.Size(111, 21);
             this.textBox1.TabIndex = 6;
             // 
-            // login
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,9 +119,9 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "login";
+            this.Name = "Login";
             this.Text = "系统登陆";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
