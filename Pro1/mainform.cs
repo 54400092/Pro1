@@ -15,5 +15,10 @@ namespace Pro1
         {
             InitializeComponent();
         }
+
+        private void mainform_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
