@@ -512,6 +512,8 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "mainform";
             this.Text = "北风软件教学版";
             this.Load += new System.EventHandler(this.mainform_Load);
