@@ -1,6 +1,6 @@
 ﻿namespace Pro1
 {
-    partial class Form1
+    partial class login
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(596, 482);
+            this.Name = "login";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
