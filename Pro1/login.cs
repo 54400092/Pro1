@@ -18,7 +18,7 @@ namespace Pro1
         {
             InitializeComponent();
         }
-        bool t = false;
+        bool t = false;//判断第一次登陆还是切换不通的用户登陆
         public static string _UserName;
         public static string _Pass;
         public static bool _RCGL;//日常管理权限
@@ -29,6 +29,14 @@ namespace Pro1
         Database data = new Database();
         Dl dl = new Dl();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bb"></param>
+        public Login(bool bb)
+        {
+            t = bb;
+        }
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -59,29 +67,60 @@ namespace Pro1
                 int jibie_Id = 0;
                 string sql = "select * from login_user";
                 DataTable dt = data.Query(sql);
-                foreach (DataRow  dr in dt.Rows )
+                foreach (DataRow dr in dt.Rows)
                 {
-                    if (this.comboBox1 .Text ==dr["name"].ToString() && this .textBox1 .Text == dr ["_pass"].ToString()  )
+                    if (this.comboBox1.Text == dr["_name"].ToString() && this.textBox1.Text == dr["_pass"].ToString())
                     {
                         b = true;
                         _UserName = dr["_name"].ToString();
                         _Pass = dr["_pass"].ToString();
                         jibie_Id = Convert.ToInt32(dr["_jibieid"]);
                         string sql_id = "select * from jibie where id = '" + jibie_Id + "'";
-                        DataTable dt1= data.Query(sql_id);
+                        DataTable dt1 = data.Query(sql_id);
+                        foreach (DataRow dr1 in dt1.Rows)
+                        {
+                            _RCGL = Convert.ToBoolean(dr1["_richang"]);
+                            _FYGL = Convert.ToBoolean(dr1["_fangyuan"]);
+                            _KHGL = Convert.ToBoolean(dr1["_kehu"]);
+                            _NBTJ = Convert.ToBoolean(dr1["_neibu"]);
+                            _XTSZ = Convert.ToBoolean(dr1["_xitong"]);
+
+                        }
 
                     }
+
                 }
-                 
+
+                if (b == true)
+                {
+                    syshandleInfo.HandlePerson = this.comboBox1.Text;
+                    syshandleInfo.HandleContent = "操作员登陆";
+                    syshandleInfo.HandleRemark = this.comboBox1.Text + "登陆系统";
+                    dl.InsertHandle(syshandleInfo);
+                    if (t != true)//第一次登陆
+                    {
+                        mainform main = new mainform();
+                        main.Show();
+                        this.Visible = false;
+                    }
+                    else//登陆后切换用户
+                    {
+                        this.Visible = false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("用户名或密码错误!","提示信息",MessageBoxButtons.OK);
+                }
+
             }
-            catch 
+            catch(Exception ex)
             {
-                
-                
+
+                MessageBox .Show(ex.ToString())  ;
             }
         }
+	}
 
-
-
-    }
+   
 }
